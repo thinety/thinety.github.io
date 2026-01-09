@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const articles = [
+  {
+    title: "Coding Machines",
+    link: "https://www.teamten.com/lawrence/writings/coding-machines/",
+  },
+  {
+    title: "The Night Watch",
+    link: "https://www.usenix.org/system/files/1311_05-08_mickens.pdf",
+  },
+];
+---
+
+<BaseLayout title="thinety - Links">
+  <h1 class="mb-4 text-center text-xl">Links</h1>
+  <ul class="flex flex-col gap-4">
+    {
+      articles.map((article) => (
+        <li>
+          <div class="text-red-700">{article.title}</div>
+          <a class="ml-4 text-gray-500" href={article.link}>
+            {article.link}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
