@@ -8,6 +8,7 @@ const blogroll = defineCollection({
     const feedUrls = [
       "https://ahal.ca/blog/index.xml",
       "https://andrewkelley.me/rss.xml",
+      "https://becca.ooo/atom.xml",
       "https://bitbashing.io/feed.xml",
       "https://blog.m-ou.se/index.xml",
       "https://blog.v-gar.de/feed/",
@@ -22,15 +23,18 @@ const blogroll = defineCollection({
       "https://gynvael.coldwind.pl/rss_en.php",
       "https://jade.fyi/rss.xml",
       "https://jonathan-frere.com/index.xml",
+      "https://jvns.ca/atom.xml",
       "https://jyn.dev/atom.xml",
       "https://kristoff.it/index.xml",
       "https://lottia.net/notes/atom.xml",
       "https://lyra.horse/blog/posts/index.xml",
       "https://manybutfinite.com/feed.xml",
       "https://matklad.github.io/feed.xml",
+      "https://mcyoung.xyz/feed.xml",
       "https://mmapped.blog/feed.xml",
       "https://nadrieril.github.io/blog/feed.xml",
       "https://neugierig.org/software/blog/atom.xml",
+      "https://offby1.website/feeds/all.atom.xml",
       "https://research.swtch.com/feed.atom",
       "https://smallcultfollowing.com/babysteps/atom.xml",
       "https://tigerbeetle.com/blog/atom.xml",
@@ -38,6 +42,7 @@ const blogroll = defineCollection({
       "https://typesanitizer.com/blog/rss.xml",
       "https://without.boats/index.xml",
       "https://www.danielbrice.net/feed.xml",
+      "https://www.judy.co.uk/atom.xml",
       "https://www.ralfj.de/blog/feed.xml",
       "https://www.scattered-thoughts.net/atom.xml",
       "https://www.teamten.com/lawrence/writings/rss.xml",
@@ -45,10 +50,10 @@ const blogroll = defineCollection({
       "https://ziglang.org/devlog/index.xml",
     ];
 
-    const fetchFeed = async (url: string) => {
+    const fetchFeed = async (feedUrl: string) => {
       let feed;
       try {
-        const response = await fetch(url);
+        const response = await fetch(feedUrl);
         const xml = await response.text();
         const parser = new RssParser();
         feed = await parser.parseString(xml);
@@ -59,9 +64,17 @@ const blogroll = defineCollection({
 
       return feed.items.flatMap((item) => {
         if (item.link === undefined) return [];
-        const url = new URL(item.link);
-        url.search = "";
-        const link = url.toString();
+
+        let postUrl;
+        if (item.link.startsWith("/")) {
+          postUrl = new URL(feedUrl);
+          postUrl.pathname = item.link;
+        } else {
+          postUrl = new URL(item.link);
+        }
+        postUrl.search = "";
+
+        const link = postUrl.toString();
 
         if (item.isoDate === undefined) return [];
         const date = new Date(item.isoDate);
