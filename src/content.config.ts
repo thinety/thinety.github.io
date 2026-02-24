@@ -13,6 +13,7 @@ const blogroll = defineCollection({
       "https://blog.m-ou.se/index.xml",
       "https://blog.v-gar.de/feed/",
       "https://boehs.org/in/blog.xml",
+      "https://bower.sh/rss",
       "https://burntsushi.net/index.xml",
       "https://buttondown.com/hillelwayne/rss",
       "https://byorgey.github.io/blog/rss.xml",
@@ -31,23 +32,26 @@ const blogroll = defineCollection({
       "https://manybutfinite.com/feed.xml",
       "https://matklad.github.io/feed.xml",
       "https://mcyoung.xyz/feed.xml",
+      "https://mitchellh.com/feed.xml",
       "https://mmapped.blog/feed.xml",
+      "https://mrcjkb.dev/atom.xml",
       "https://nadrieril.github.io/blog/feed.xml",
       "https://neugierig.org/software/blog/atom.xml",
       "https://offby1.website/feeds/all.atom.xml",
       "https://research.swtch.com/feed.atom",
       "https://smallcultfollowing.com/babysteps/atom.xml",
+      "https://strongly-typed-thoughts.net/blog/feed",
       "https://tigerbeetle.com/blog/atom.xml",
       "https://transactional.blog/feed.xml",
       "https://typesanitizer.com/blog/rss.xml",
       "https://without.boats/index.xml",
-      "https://www.danielbrice.net/feed.xml",
       "https://www.judy.co.uk/atom.xml",
       "https://www.ralfj.de/blog/feed.xml",
       "https://www.scattered-thoughts.net/atom.xml",
       "https://www.teamten.com/lawrence/writings/rss.xml",
       "https://yosefk.com/blog/feed",
       "https://ziglang.org/devlog/index.xml",
+      "https://zignar.net/index.xml",
     ];
 
     const fetchFeed = async (feedUrl: string) => {
@@ -69,8 +73,9 @@ const blogroll = defineCollection({
         // biome-ignore lint/suspicious/noImplicitAnyLet: false positive
         let postUrl;
         if (item.link.startsWith("/")) {
-          postUrl = new URL(feedUrl);
-          postUrl.pathname = item.link;
+          postUrl = new URL(item.link, feedUrl);
+        } else if (!item.link.startsWith("https")) {
+          postUrl = new URL(`https://${item.link}`);
         } else {
           postUrl = new URL(item.link);
         }
