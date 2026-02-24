@@ -51,6 +51,7 @@ const blogroll = defineCollection({
     ];
 
     const fetchFeed = async (feedUrl: string) => {
+      // biome-ignore lint/suspicious/noImplicitAnyLet: false positive
       let feed;
       try {
         const response = await fetch(feedUrl);
@@ -65,6 +66,7 @@ const blogroll = defineCollection({
       return feed.items.flatMap((item) => {
         if (item.link === undefined) return [];
 
+        // biome-ignore lint/suspicious/noImplicitAnyLet: false positive
         let postUrl;
         if (item.link.startsWith("/")) {
           postUrl = new URL(feedUrl);

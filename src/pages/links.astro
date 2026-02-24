@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
+import BaseLayout from "#layouts/BaseLayout.astro";
 
 const articles = [
   {
@@ -24,15 +24,13 @@ const articles = [
 <BaseLayout title="thinety - Links">
   <h1 class="mb-4 text-center text-xl">Links</h1>
   <ul class="flex flex-col gap-4">
-    {
-      articles.map((article) => (
+    {articles.map((article) => (
         <li>
           <div class="text-red-700">{article.title}</div>
           <a class="ml-4 text-gray-500" href={article.link}>
             {article.link}
           </a>
         </li>
-      ))
-    }
+      ))}
   </ul>
 </BaseLayout>
