@@ -27,6 +27,10 @@ jobs:
           node-version: 24
           cache: npm
           cache-dependency-path: package-lock.json
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v5
+      - name: Compile CV
+        run: typst compile cv.typ public/cv.pdf
       - name: Install dependencies
         run: npm ci
       - name: Check formatting

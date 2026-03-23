@@ -7,3 +7,7 @@
 a:hover {
   @apply underline;
 }
+
+p {
+  @apply mt-4;
+}

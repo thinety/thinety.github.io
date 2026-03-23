@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+
+import BaseLayout from "#layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="thinety - About">
+  <h1 class="mb-4 text-center text-xl">About</h1>
+  <article class="after:block after:clear-both text-justify">
+    <Image
+      src="/me.jpg"
+      width="164"
+      height="164"
+      alt="thinety"
+      class="float-left mr-4"
+    />
+    <p>
+      Hello there! I'm Thiago Trannin, a software engineer currently pursuing a
+      Master's double degree in Electrical Engineering at Federal University of
+      Paraná (UFPR) and Automotive Engineering at Technische Hochschule
+      Ingolstadt (THI).
+    </p>
+    <p>
+      You can find my CV in PDF form
+      <a href="/cv.pdf" class="underline">here</a>.
+    </p>
+  </article>
+</BaseLayout>
