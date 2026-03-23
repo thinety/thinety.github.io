@@ -1,6 +1,8 @@
 ---
 import "./global.css";
 
+import { Font } from "astro:assets";
+
 interface Props {
   title?: string;
 }
@@ -11,9 +13,10 @@ const { title = "thinety" } = Astro.props;
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    <Font cssVariable="--font-montserrat" />
     <title>{title}</title>
   </head>
-  <body class="mx-auto max-w-xl p-4">
+  <body class="mx-auto max-w-2xl p-4">
     <header class="mb-4">
       <nav class="flex flex-row gap-4">
         <a class="flex-1" href="/">Home</a>
