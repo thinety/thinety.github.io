@@ -118,7 +118,7 @@ const blogroll = defineCollection({
       selectedPosts.push(post);
     }
 
-    return selectedPosts.sort((a, b) => b.date.getTime() - a.date.getTime());
+    return selectedPosts;
   },
   schema: z.object({
     title: z.string(),

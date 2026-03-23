@@ -12,12 +12,12 @@
     "#layouts/*": "./src/layouts/*"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.6",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.0.8",
     "rss-parser": "^3.13.0",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.3"
+    "@biomejs/biome": "2.4.8"
   }
 }
