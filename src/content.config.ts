@@ -11,6 +11,7 @@ const blogroll = defineCollection({
       "https://becca.ooo/atom.xml",
       "https://bitbashing.io/feed.xml",
       "https://blog.m-ou.se/index.xml",
+      "https://blog.pnkfx.org/atom.xml",
       "https://blog.v-gar.de/feed/",
       "https://boehs.org/in/blog.xml",
       "https://bower.sh/rss",
@@ -27,8 +28,10 @@ const blogroll = defineCollection({
       "https://jvns.ca/atom.xml",
       "https://jyn.dev/atom.xml",
       "https://kristoff.it/index.xml",
+      "https://limpet.net/mbrubeck/atom.xml",
       "https://lottia.net/notes/atom.xml",
       "https://lyra.horse/blog/posts/index.xml",
+      "https://manishearth.github.io/atom.xml",
       "https://manybutfinite.com/feed.xml",
       "https://matklad.github.io/feed.xml",
       "https://mcyoung.xyz/feed.xml",
@@ -39,6 +42,7 @@ const blogroll = defineCollection({
       "https://neugierig.org/software/blog/atom.xml",
       "https://offby1.website/feeds/all.atom.xml",
       "https://research.swtch.com/feed.atom",
+      "https://ryhl.io/rss.xml",
       "https://smallcultfollowing.com/babysteps/atom.xml",
       "https://strongly-typed-thoughts.net/blog/feed",
       "https://tigerbeetle.com/blog/atom.xml",
@@ -49,6 +53,7 @@ const blogroll = defineCollection({
       "https://www.ralfj.de/blog/feed.xml",
       "https://www.scattered-thoughts.net/atom.xml",
       "https://www.teamten.com/lawrence/writings/rss.xml",
+      "https://www.tedinski.com/feed.xml",
       "https://yosefk.com/blog/feed",
       "https://ziglang.org/devlog/index.xml",
       "https://zignar.net/index.xml",
@@ -74,10 +79,11 @@ const blogroll = defineCollection({
         let postUrl;
         if (item.link.startsWith("/")) {
           postUrl = new URL(item.link, feedUrl);
-        } else if (!item.link.startsWith("https")) {
+        } else if (!item.link.startsWith("http")) {
           postUrl = new URL(`https://${item.link}`);
         } else {
           postUrl = new URL(item.link);
+          postUrl.protocol = "https:";
         }
         postUrl.search = "";
 
