@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "biome check && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -12,12 +12,14 @@
     "#layouts/*": "./src/layouts/*"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@biomejs/biome": "2.4.8",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "^6.0.8",
+    "astro": "^6.1.2",
     "rss-parser": "^3.13.0",
     "tailwindcss": "^4.2.2"
   },
-  "devDependencies": {
-    "@biomejs/biome": "2.4.8"
+  "overrides": {
+    "vite": "^7"
   }
 }
