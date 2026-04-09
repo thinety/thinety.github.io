@@ -1,5 +1,5 @@
-import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   fonts: [

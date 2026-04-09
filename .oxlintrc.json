@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "options": {
+    "denyWarnings": true
+    // TODO: type-aware linting (https://oxc.rs/docs/guide/usage/linter/type-aware.html).
+    // Needs Oxlint to fully support Astro (https://oxc.rs/compatibility.html).
+    // Then maybe `@astrojs/check` won't be necessary anymore?
+  }
+}

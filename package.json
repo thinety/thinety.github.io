@@ -1,21 +1,22 @@
 {
   "name": "thinety-github-io",
-  "type": "module",
   "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "biome check && astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
+  "type": "module",
   "imports": {
     "#layouts/*": "./src/layouts/*"
   },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "oxfmt --check && oxlint && astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
   "dependencies": {
     "@astrojs/check": "^0.9.8",
-    "@biomejs/biome": "2.4.8",
     "@tailwindcss/vite": "^4.2.2",
-    "astro": "^6.1.2",
+    "astro": "^6.1.5",
+    "oxfmt": "^0.44.0",
+    "oxlint": "^1.59.0",
     "rss-parser": "^3.13.0",
     "tailwindcss": "^4.2.2"
   },
