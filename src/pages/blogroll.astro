@@ -12,11 +12,11 @@ blogroll.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
   <ul class="flex flex-col gap-4">
     {blogroll.map((post) => (
         <li>
-          <div class="text-gray-500">
+          <div class="text-foreground-light">
             {post.data.date.toDateString().split(" ").slice(1).join(" ")},
             {new URL(post.data.link).hostname}
           </div>
-          <a class="text-red-700" href={post.data.link}>
+          <a class="text-primary" href={post.data.link}>
             {post.data.title}
           </a>
         </li>

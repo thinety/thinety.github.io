@@ -1,7 +1,26 @@
 @import "tailwindcss";
 
 @theme {
+  --font-*: initial;
   --font-sans: var(--font-montserrat);
+
+  --color-*: initial;
+  --color-foreground: #0a0007;
+  --color-foreground-light: #4a5565;
+  --color-background: #fdfaff;
+  --color-primary: #c10007;
+}
+
+@layer theme {
+  :root,
+  :host {
+    @variant dark {
+      --color-foreground: #fff5fc;
+      --color-foreground-light: #9ba6b5;
+      --color-background: #030005;
+      --color-primary: #ff3d44;
+    }
+  }
 }
 
 a:hover {
