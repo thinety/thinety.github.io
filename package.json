@@ -17,8 +17,14 @@
     "astro": "^6.1.5",
     "oxfmt": "^0.44.0",
     "oxlint": "^1.59.0",
-    "rss-parser": "^3.13.0",
-    "tailwindcss": "^4.2.2"
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "@astrojs/language-server": "^2.16.6",
+    "@tailwindcss/language-server": "^0.14.29",
+    "typescript": "^5.9.3",
+    "typescript-language-server": "^5.1.3",
+    "vscode-langservers-extracted": "^4.10.0"
   },
   "overrides": {
     "vite": "^7"
