@@ -28,7 +28,6 @@ const blogroll = defineCollection({
       "https://filipesilva.github.io/paulgraham-rss/feed.rss",
       "https://geeklaunch.io/blog/index.xml",
       "https://glfmn.io/atom.xml",
-      "https://gynvael.coldwind.pl/rss_en.php",
       "https://harudagondi.space/rss.xml",
       "https://home.expurple.me/posts/index.xml",
       "https://hugotunius.se/feed.xml",
@@ -90,32 +89,37 @@ const blogroll = defineCollection({
         return [];
       }
 
-      return feed.items.flatMap((item) => {
-        if (item.link === undefined) return [];
+      return feed.items
+        .flatMap((item) => {
+          if (item.link === undefined) return [];
+          if (item.isoDate === undefined) return [];
 
-        let postUrl;
-        if (item.link.startsWith("/")) {
-          postUrl = new URL(item.link, feedUrl);
-        } else if (!item.link.startsWith("http")) {
-          postUrl = new URL(`https://${item.link}`);
-        } else {
-          postUrl = new URL(item.link);
+          let postUrl = URL.parse(item.link);
+          if (postUrl == null) {
+            // remove host if present
+            const i = item.link.indexOf("/");
+            if (i > 0) {
+              item.link = item.link.slice(i);
+            }
+            // try to parse as relative reference
+            postUrl = new URL(item.link, feedUrl);
+          }
           postUrl.protocol = "https:";
-        }
-        postUrl.search = "";
+          postUrl.search = "";
 
-        const link = postUrl.toString();
+          const link = postUrl.toString();
 
-        if (item.isoDate === undefined) return [];
-        const date = new Date(item.isoDate);
+          const date = new Date(item.isoDate);
 
-        return {
-          ...item,
-          id: link,
-          link,
-          date,
-        };
-      });
+          return {
+            ...item,
+            id: link,
+            link,
+            date,
+          };
+        })
+        .sort((a, b) => a.date.getTime() - b.date.getTime())
+        .slice(-3);
     };
 
     const selectedPosts = [];
@@ -124,7 +128,6 @@ const blogroll = defineCollection({
 
     // keep the most recent post from each feed
     for (const feed of feeds) {
-      feed.sort((a, b) => a.date.getTime() - b.date.getTime());
       const post = feed.pop();
       if (post === undefined) continue;
       selectedPosts.push(post);
