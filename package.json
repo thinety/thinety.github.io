@@ -12,15 +12,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.8",
-    "@tailwindcss/vite": "^4.2.2",
-    "astro": "^6.1.5",
-    "oxfmt": "^0.44.0",
-    "oxlint": "^1.59.0",
+    "@astrojs/check": "^0.9.9",
+    "@tailwindcss/vite": "^4.2.4",
+    "astro": "^6.1.10",
+    "oxfmt": "^0.47.0",
+    "oxlint": "^1.62.0",
     "rss-parser": "^3.13.0"
   },
   "devDependencies": {
-    "@astrojs/language-server": "^2.16.6",
+    "@astrojs/language-server": "^2.16.7",
     "@tailwindcss/language-server": "^0.14.29",
     "typescript": "^5.9.3",
     "typescript-language-server": "^5.1.3",
