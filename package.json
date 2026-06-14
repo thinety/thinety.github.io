@@ -7,9 +7,10 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "oxfmt --check && oxlint && astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "check": "oxfmt --check && oxlint && astro check",
+    "build:cv": "typst compile cv.typ public/cv.pdf",
+    "build:astro": "astro build",
+    "build": "npm run build:cv && npm run build:astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",

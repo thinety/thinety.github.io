@@ -29,12 +29,10 @@ jobs:
           cache-dependency-path: package-lock.json
       - name: Setup Typst
         uses: typst-community/setup-typst@v5
-      - name: Compile CV
-        run: typst compile cv.typ public/cv.pdf
       - name: Install dependencies
         run: npm ci --omit=dev
       - name: Build
-        run: npm run build
+        run: npm run check && npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
