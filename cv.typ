@@ -76,7 +76,7 @@
     // - https://github.com/nats-io/nats.rs/pull/1365
     // - https://github.com/nats-io/nats.rs/pull/1366
   ],
-  box(clip: true, radius: 50%, image("public/me.jpg", width: 18em)),
+  box(clip: true, radius: 50%, image("src/assets/me.jpg", width: 18em)),
 )
 
 

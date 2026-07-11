@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "type": "module",
   "imports": {
+    "#assets/*": "./src/assets/*",
     "#layouts/*": "./src/layouts/*"
   },
   "scripts": {
     "dev": "astro dev",
     "check": "oxfmt --check && oxlint && astro check",
-    "build:cv": "typst compile cv.typ public/cv.pdf",
+    "build:cv": "mkdir -p public && typst compile cv.typ public/cv.pdf",
     "build:astro": "astro build",
     "build": "npm run build:cv && npm run build:astro"
   },
