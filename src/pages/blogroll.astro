@@ -3,20 +3,44 @@ import { getCollection } from "astro:content";
 
 import BaseLayout from "#layouts/BaseLayout.astro";
 
-const blogroll = await getCollection("blogroll");
-blogroll.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const feedsCollection = await getCollection("feeds");
+
+const selectedPosts = [];
+
+const feeds = feedsCollection.map(entry => entry.data.posts
+  .sort((a, b) => a.date.getTime() - b.date.getTime())
+  .slice(-3)
+);
+
+// keep the most recent post from each feed
+for (const feed of feeds) {
+  const post = feed.pop();
+  if (post === undefined) continue;
+  selectedPosts.push(post);
+}
+
+const posts = feeds.flat().sort((a, b) => a.date.getTime() - b.date.getTime());
+
+// select remaining posts until a maximum
+while (selectedPosts.length < 100) {
+  const post = posts.pop();
+  if (post === undefined) break;
+  selectedPosts.push(post);
+}
+
+selectedPosts.sort((a, b) => b.date.getTime() - a.date.getTime());
 ---
 
 <BaseLayout title="thinety - Blogroll">
   <h1 class="mb-4 text-center text-xl">Blogroll</h1>
   <ul class="flex flex-col gap-4">
-    {blogroll.map((post) => (
+    {selectedPosts.map((post) => (
         <li>
           <div class="text-foreground-light">
-            {post.data.date.toDateString().split(" ").slice(1).join(" ")}, {new URL(post.data.link).hostname}
+            {post.date.toDateString().split(" ").slice(1).join(" ")}, {new URL(post.link).hostname}
           </div>
-          <a class="text-primary" href={post.data.link}>
-            {post.data.title}
+          <a class="text-primary" href={post.link}>
+            {post.title}
           </a>
         </li>
       ))}
