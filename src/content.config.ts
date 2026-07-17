@@ -97,8 +97,11 @@ const blogroll = defineCollection({
 
       return feed.items
         .flatMap((item) => {
+          if (item.title === undefined) return [];
           if (item.link === undefined) return [];
           if (item.isoDate === undefined) return [];
+
+          const title = item.title.trim();
 
           let postUrl = URL.parse(item.link);
           if (postUrl == null) {
@@ -112,14 +115,13 @@ const blogroll = defineCollection({
           }
           postUrl.protocol = "https:";
           postUrl.search = "";
-
           const link = postUrl.toString();
 
           const date = new Date(item.isoDate);
 
           return {
-            ...item,
             id: link,
+            title,
             link,
             date,
           };

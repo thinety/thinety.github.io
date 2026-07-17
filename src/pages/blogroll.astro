@@ -13,8 +13,7 @@ blogroll.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
     {blogroll.map((post) => (
         <li>
           <div class="text-foreground-light">
-            {post.data.date.toDateString().split(" ").slice(1).join(" ")},
-            {new URL(post.data.link).hostname}
+            {post.data.date.toDateString().split(" ").slice(1).join(" ")}, {new URL(post.data.link).hostname}
           </div>
           <a class="text-primary" href={post.data.link}>
             {post.data.title}
