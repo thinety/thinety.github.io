@@ -37,7 +37,9 @@ jobs:
         uses: actions/cache/restore@v6
         with:
           path: node_modules/.astro/
-          key: astro-cache
+          key: astro-cache-${{ github.run_id }}
+          restore-keys: |
+            astro-cache-
       - name: Build
         run: npm run check && npm run build
         env:
@@ -46,7 +48,7 @@ jobs:
         uses: actions/cache/save@v6
         with:
           path: node_modules/.astro/
-          key: astro-cache
+          key: astro-cache-${{ github.run_id }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
