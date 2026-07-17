@@ -94,6 +94,7 @@ function rssFeedLoader(feedUrls: string[]) {
 
 const feeds = defineCollection({
   loader: rssFeedLoader([
+    "http://feeds.grack.com/grack",
     "https://ahal.ca/blog/index.xml",
     "https://andrewkelley.me/rss.xml",
     "https://bal-e.org/blog/rss.xml",
