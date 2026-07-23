@@ -7,8 +7,23 @@ import RssParser from "rss-parser";
 function rssFeedLoader(feedUrls: string[]) {
   return {
     name: "rss-feed-loader",
-    load: async ({ store, logger, parseData }) => {
+    load: async ({ store, meta, logger, parseData }) => {
+      const metaLastUpdated = JSON.parse(meta.get("lastUpdated") ?? "{}");
+      const lastUpdated: { [s: string]: number } = {};
+      for (const feedUrl of feedUrls) {
+        lastUpdated[feedUrl] = metaLastUpdated[feedUrl];
+      }
+      const now = new Date().getTime();
+
       const fetchFeed = async (feedUrl: string) => {
+        if (
+          lastUpdated[feedUrl] !== undefined &&
+          now - lastUpdated[feedUrl] < 60 * 60 * 1000 // 1 hour
+        ) {
+          // we know this entry is defined because it exists in `lastUpdated`
+          return store.get(feedUrl)!.data;
+        }
+
         try {
           const response = await fetch(feedUrl, {
             signal: AbortSignal.timeout(10000),
@@ -16,6 +31,8 @@ function rssFeedLoader(feedUrls: string[]) {
           const xml = await response.text();
           const parser = new RssParser();
           const feed = await parser.parseString(xml);
+
+          lastUpdated[feedUrl] = now;
 
           return {
             posts: feed.items
@@ -53,6 +70,7 @@ function rssFeedLoader(feedUrls: string[]) {
         } catch (error) {
           logger.warn(`Fetching feed failed: ${feedUrl}\n${error}`);
         }
+
         return store.get(feedUrl)?.data;
       };
 
@@ -79,6 +97,8 @@ function rssFeedLoader(feedUrls: string[]) {
           logger.warn(`Parsing feed failed: ${feedUrl}\n${error}`);
         }
       }
+
+      meta.set("lastUpdated", JSON.stringify(lastUpdated));
     },
     schema: z.object({
       posts: z.array(
