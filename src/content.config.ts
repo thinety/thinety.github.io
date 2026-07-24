@@ -154,6 +154,7 @@ const feeds = defineCollection({
     "https://lexi-lambda.github.io/feeds/all.atom.xml",
     "https://limpet.net/mbrubeck/atom.xml",
     "https://lottia.net/notes/atom.xml",
+    "https://lukaswerner.com/feed.xml",
     "https://lyra.horse/blog/posts/index.xml",
     "https://manishearth.github.io/atom.xml",
     "https://matklad.github.io/feed.xml",
