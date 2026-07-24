@@ -8,33 +8,37 @@ function rssFeedLoader(feedUrls: string[]) {
   return {
     name: "rss-feed-loader",
     load: async ({ store, meta, logger, parseData }) => {
-      const metaLastUpdated = JSON.parse(meta.get("lastUpdated") ?? "{}");
-      const lastUpdated: { [s: string]: number } = {};
-      for (const feedUrl of feedUrls) {
-        lastUpdated[feedUrl] = metaLastUpdated[feedUrl];
-      }
+      const lastUpdated: { [s: string]: number } = JSON.parse(meta.get("lastUpdated") ?? "{}");
       const now = new Date().getTime();
 
-      const fetchFeed = async (feedUrl: string) => {
-        if (
-          lastUpdated[feedUrl] !== undefined &&
-          now - lastUpdated[feedUrl] < 60 * 60 * 1000 // 1 hour
-        ) {
-          // we know this entry is defined because it exists in `lastUpdated`
-          return store.get(feedUrl)!.data;
-        }
+      await Promise.all(
+        feedUrls.map(async (feedUrl) => {
+          if (
+            lastUpdated[feedUrl] !== undefined &&
+            now - lastUpdated[feedUrl] < 60 * 60 * 1000 // 1 hour
+          ) {
+            logger.info(`Using cached feed: ${feedUrl}`);
+            return;
+          }
 
-        try {
-          const response = await fetch(feedUrl, {
-            signal: AbortSignal.timeout(10000),
-          });
-          const xml = await response.text();
-          const parser = new RssParser();
-          const feed = await parser.parseString(xml);
+          let feed;
+          try {
+            const response = await fetch(feedUrl, {
+              signal: AbortSignal.timeout(10000),
+            });
+            const xml = await response.text();
+            const parser = new RssParser();
+            feed = await parser.parseString(xml);
+          } catch (error) {
+            if (store.has(feedUrl)) {
+              logger.warn(`Using cached feed: ${feedUrl}\n${error}`);
+            } else {
+              logger.error(`Could not fetch feed: ${feedUrl}\n${error}`);
+            }
+            return;
+          }
 
-          lastUpdated[feedUrl] = now;
-
-          return {
+          let data = {
             posts: feed.items
               .map((item) => {
                 if (item.title === undefined) return undefined;
@@ -67,36 +71,20 @@ function rssFeedLoader(feedUrls: string[]) {
               })
               .filter((post) => post !== undefined),
           };
-        } catch (error) {
-          logger.warn(`Fetching feed failed: ${feedUrl}\n${error}`);
-        }
-
-        return store.get(feedUrl)?.data;
-      };
-
-      const feeds = await Promise.all(
-        feedUrls.map(async (feedUrl) => [feedUrl, await fetchFeed(feedUrl)] as const),
-      );
-
-      store.clear();
-      for (const [feedUrl, feed] of feeds) {
-        if (feed === undefined) {
-          logger.warn(`Feed could not be obtained: ${feedUrl}`);
-          continue;
-        }
-        try {
-          const data = await parseData({
+          data = await parseData({
             id: feedUrl,
-            data: feed,
+            data,
           });
           store.set({
             id: feedUrl,
             data,
           });
-        } catch (error) {
-          logger.warn(`Parsing feed failed: ${feedUrl}\n${error}`);
-        }
-      }
+
+          lastUpdated[feedUrl] = now;
+
+          logger.info(`Successfully fetched feed: ${feedUrl}`);
+        }),
+      );
 
       meta.set("lastUpdated", JSON.stringify(lastUpdated));
     },
