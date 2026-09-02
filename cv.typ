@@ -46,11 +46,13 @@
       )
       #(
         box("+55 41 99145 1155"),
-        box("Ingolstadt, Bayern, Germany"),
-        my-link("mailto:", "t.j.t.trannin@gmail.com"),
-        my-link("https://", "github.com/thinety"),
-        my-link("https://", "thinety.github.io/about", body: "thinety.github.io"),
-        my-link("https://", "linkedin.com/in/tranninthiago"),
+        box("Munich, Bayern, Germany"),
+        box(my-link("mailto:", "t.j.t.trannin@gmail.com")),
+        box(my-link("https://", "thinety.github.io/about", body: "thinety.github.io")),
+        box(my-link("https://", "github.com/thinety")),
+        box(my-link("https://", "tangled.org/thinety.eurosky.social")),
+        box(my-link("https://", "linkedin.com/in/tranninthiago")),
+        box(my-link("https://", "sifa.id/p/thinety.eurosky.social")),
       ).join(" | ")
     ]
 
@@ -76,7 +78,7 @@
     // - https://github.com/nats-io/nats.rs/pull/1365
     // - https://github.com/nats-io/nats.rs/pull/1366
   ],
-  box(clip: true, radius: 50%, image("src/assets/me.jpg", width: 18em)),
+  box(clip: true, radius: 50%, image("src/assets/me.jpg", width: 20em)),
 )
 
 
@@ -87,8 +89,10 @@
 #strong[Backend]: Node.js, Flask, Axum \
 #strong[Databases]: PostgreSQL, SQLite \
 #strong[Data processing]: NumPy, Pandas, OpenCV, PyTorch \
-#strong[Environment tools]: Linux, Docker, Git, Bash, ROS \
-#strong[Languages]: Portuguese (native), English (fluent), German (intermediate)
+#strong[Cloud]: AWS, Microservices \
+#strong[Tools]: Docker, Podman, Git, Bash \
+#strong[Environments]: Linux, Embedded Systems, ROS \
+#strong[Languages]: Portuguese (native), English (fluent), German (intermediate), French (beginner)
 
 == Experience
 
@@ -104,6 +108,23 @@
     ]
     #company #h(1fr) #location \
   ]
+
+  #job(
+    titles: (
+      [Working Student Rust Engineering],
+    ),
+    dates: (
+      [May 2026 --- Present],
+    ),
+    company: [BMW Group],
+    location: [Munich, Germany],
+  )
+  - Develops and maintains internal developer tools used by different teams
+    across the company.
+  - Assesses and optimizes the performance of microservices running in cloud
+    environments.
+  - Became familiar with the use of agentic AI to accelerate development of
+    Rust software.
 
   #job(
     titles: (
