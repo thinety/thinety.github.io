@@ -158,6 +158,7 @@ const feeds = defineCollection({
     "https://nnethercote.github.io/feed.xml",
     "https://pranitha.dev/atom.xml",
     "https://purplesyringa.moe/blog/feed.rss",
+    "https://rapha.land/feed.xml",
     "https://research.swtch.com/feed.atom",
     "https://ryhl.io/rss.xml",
     "https://sabrinajewson.org/blog/feed.xml",
