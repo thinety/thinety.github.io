@@ -119,10 +119,11 @@
     company: [BMW Group],
     location: [Munich, Germany],
   )
-  - Develops and maintains internal developer tools used by different teams
-    across the company.
+  - Develops and maintains internal developer tools to facilitate access
+    to databases hosted in Amazon RDS.
   - Assesses and optimizes the performance of microservices running in cloud
-    environments.
+    environments, mostly written in Rust using the Tokio asynchronous runtime.
+    Interacts on a daily basis with Amazon S3, Lambda and EKS.
   - Became familiar with the use of agentic AI to accelerate development of
     Rust software.
 
@@ -176,7 +177,8 @@
     network protocols, CPU and memory profiling, web interfaces, and automated testing.
   - Refactored a monolithic C++ project in smaller, independent modules.
     Pioneered Rust adoption in safety-critical functionality and maintained
-    its integration with existing code via the C ABI.
+    its integration with existing code via the C ABI. Integrated the Tokio
+    runtime into existing asynchronous C++ code.
 
   #job(
     titles: (
