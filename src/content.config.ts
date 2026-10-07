@@ -132,6 +132,7 @@ const feeds = defineCollection({
     "https://goldstein.lol/index.atom",
     "https://graydon2.dreamwidth.org/data/atom",
     "https://harudagondi.space/rss.xml",
+    "https://herecomesthemoon.net/posts/index.xml",
     "https://home.expurple.me/posts/index.xml",
     "https://hugotunius.se/feed.xml",
     "https://itsallaboutthebit.com/atom.xml",
