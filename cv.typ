@@ -45,7 +45,7 @@
         if body != none { body } else { destination },
       )
       #(
-        box("+55 41 99145 1155"),
+        box("+49 175 3819985"),
         box("Munich, Bayern, Germany"),
         box(my-link("mailto:", "t.j.t.trannin@gmail.com")),
         box(my-link("https://", "thinety.github.io/about", body: "thinety.github.io")),
@@ -84,7 +84,7 @@
 
 == Skills
 
-#strong[Programming languages]: C, C++, Rust, Zig, Python, JavaScript, TypeScript, Haskell, VHDL \
+#strong[Programming languages]: C, C++, Rust, Zig, Python, JavaScript, TypeScript, Haskell, OCaml, VHDL \
 #strong[Frontend]: React, React Native, Tailwind, Astro \
 #strong[Backend]: Node.js, Flask, Axum \
 #strong[Databases]: PostgreSQL, SQLite \
@@ -114,16 +114,20 @@
       [Working Student Rust Engineering],
     ),
     dates: (
-      [May 2026 --- Present],
+      [May 2026 --- October 2026],
     ),
     company: [BMW Group],
     location: [Munich, Germany],
   )
-  - Develops and maintains internal developer tools to facilitate access
-    to databases hosted in Amazon RDS.
-  - Assesses and optimizes the performance of microservices running in cloud
+  - Assessed and optimized the performance of microservices running in cloud
     environments, mostly written in Rust using the Tokio asynchronous runtime.
-    Interacts on a daily basis with Amazon S3, Lambda and EKS.
+  - Developed and maintained internal developer tools to facilitate access
+    to databases hosted on Amazon RDS.
+  - Ported custom big data workflows to Apache Spark and deployed them on
+    Amazon EMR Serverless.
+  - Improved the performance of Java services, particularly the deserialization
+    of custom formats into in-memory data structures.
+  - Interacted on a daily basis with AWS services such as S3, Lambda and EKS.
   - Became familiar with the use of agentic AI to accelerate development of
     Rust software.
 
