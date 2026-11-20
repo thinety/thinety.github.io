@@ -9,7 +9,7 @@
 
 #set text(
   lang: "en",
-  font: "New Computer Modern",
+  font: "Libertinus Serif",
   size: 9pt,
   // Disable ligatures so ATS systems do not get confused when parsing fonts.
   ligatures: false,
@@ -57,9 +57,10 @@
   == Summary
 
   Software Engineer and double-degree Master's student in Electrical and Automotive
-  Engineering, interested in systems programming, operating systems, networking,
-  and low-level software in general. Strong foundation in algorithms and data structures
-  through competitive programming.
+  Engineering, with experience in systems programming, embedded software,
+  performance optimization, and backend development. Strong foundation in
+  algorithms and data structures through competitive programming, with particular
+  interests in operating systems, networking, and low-level software.
 
   // I'm a strong advocate of Rust and believe that it is a great technology in the
   // systems programming domain because it allows one to write software that's not
@@ -76,20 +77,6 @@
 ]
 
 #let picture = box(clip: true, radius: 50%, image("src/assets/me.jpg", width: 20em))
-
-#let skills = [
-  == Skills
-
-  #strong[Programming Languages]: C, C++, Rust, Zig, Python, JavaScript, TypeScript, Lua, Haskell, OCaml, Bash, VHDL \
-  #strong[Frontend Development]: React, React Native, Tailwind CSS, Astro, HTML5, CSS3 \
-  #strong[Backend Development & Distributed Systems]: Node.js, Express, Flask, Axum, REST APIs, HTTP, WebSockets, gRPC, Protobuf \
-  #strong[Databases]: SQL, PostgreSQL, SQLite, DuckDB, Redis \
-  #strong[Data Science & Machine Learning]: NumPy, Pandas, OpenCV, PyTorch, large language models (LLMs), AI agents \
-  #strong[Systems Programming & Embedded Systems]: Linux, Yocto, CMake, GDB, Valgrind, sanitizers, Tokio, concurrency, multithreading \
-  #strong[Cloud Computing & DevOps]: AWS, Docker, Podman, Kubernetes, CI/CD, GitHub Actions \
-  #strong[Development Tools & Methodologies]: Git, Shell, Neovim, test-driven development (TDD), Agile, Scrum, Kanban, Jira, Confluence \
-  #strong[Spoken Languages]: Portuguese (native), English (fluent), German (intermediate), French (beginner)
-]
 
 #let experience = [
   == Experience
@@ -132,16 +119,16 @@
   // - Interacted on a daily basis with AWS services such as S3, Lambda and EKS.
   // - Became familiar with the use of agentic AI to accelerate development of
   //   Rust software.
-  - Optimized production Java microservices using async-profiler and flamegraphs,
+  - Optimized production Java microservices using *async-profiler* and *flamegraphs*,
     refining custom-format deserialization until JVM operations, rather than
     application code, became the primary performance bottleneck.
-  - Profiled production Rust microservices using perf and flamegraphs, analyzing
-    Tokio task execution and blocking operations to identify performance
+  - Profiled production *Rust microservices* using *perf* and *flamegraphs*, analyzing
+    *Tokio task execution* and blocking operations to identify
     bottlenecks and optimize latency and cloud resource utilization.
-  - Developed a Rust CLI/TUI for accessing Amazon RDS databases, automating
-    authentication, AWS profile discovery, database enumeration, and Kubernetes
-    jump-pod provisioning within the databases' VPCs; leveraged AI-assisted
-    code generation to accelerate development.
+  - Developed a *Rust CLI/TUI* for accessing *Amazon RDS* databases, automating
+    authentication, AWS profile discovery, database enumeration, and *Kubernetes*
+    jump-pod provisioning within the databases' VPCs; leveraged *AI-assisted
+    code generation* to accelerate development.
 
   // #job(
   //   titles: (
@@ -166,10 +153,10 @@
     company: [C Channel],
     location: [Tokyo, Japan],
   )
-  - Assessed the impact of event data from the company's e-storefront platform
-    in customer conversions through Meta's and TikTok's APIs.
-  - Position sponsored by the Japanese government through a coding contest involving
-    students from countries in Africa and Latin America.
+  - Integrated e-commerce event data with *Meta and TikTok APIs* to support
+    targeted advertising and improve *customer conversion rates*.
+  - Selected for a *Japanese government-sponsored internship program* through an
+    international competitive programming contest.
 
   #job(
     titles: (
@@ -194,14 +181,14 @@
   //   Pioneered Rust adoption in safety-critical functionality and maintained
   //   its integration with existing code via the C ABI. Integrated the Tokio
   //   runtime into existing asynchronous C++ code.
-  - Developed and maintained embedded software for traffic-control cameras,
-    spanning image-processing routines, data pipelines, parsers, logging systems,
-    FFI, network protocols, CPU and memory profiling, web interfaces, and automated testing.
-  - Modularized a monolithic C++ codebase and introduced Rust through the C ABI,
+  - Developed *embedded software* for traffic-control cameras,
+    spanning *image-processing routines*, data pipelines, parsers, logging systems,
+    FFI, network protocols, *CPU and memory profiling*, web interfaces, and automated testing.
+  - *Modularized a monolithic C++ codebase* and introduced *Rust* through the *C ABI*,
     replacing a crash-prone module with a memory-safe implementation that exposed
-    image-data to external REST clients. Integrated Tokio into existing asynchronous C++ code.
-  - Improved image-processing performance by copying DMA-backed sensor buffers
-    into process-owned RAM early, increasing memory locality and cache utilization.
+    image data to external REST clients. Integrated Tokio into existing asynchronous C++ code.
+  - Improved *image-processing performance* by copying *DMA-backed sensor buffers*
+    into process-owned RAM early in the pipeline, increasing *memory locality and cache efficiency*.
 
   #job(
     titles: (
@@ -213,10 +200,10 @@
     company: [DeepX],
     location: [Tokyo, Japan],
   )
-  - Designed a keypoint detection model for pose estimation of an excavator machine's
-    arm using camera feed from above the operator's seat.
-  - Position sponsored by the Japanese government through a coding contest involving
-    students from countries in Africa and Latin America.
+  - Designed a *keypoint-detection model* for *pose estimation* of an excavator machine's
+    arm using camera footage from above the operator's seat.
+  - Selected for a *Japanese government-sponsored internship program* through an
+    international competitive programming contest.
 
   #job(
     titles: (
@@ -239,12 +226,12 @@
   //   plate reading via optical character recognition.
   // - Deployed cross-compiled native libraries for computer vision tasks,
   //   with accompanying wrappers for high-level languages.
-  - Developed traditional computer-vision and deep-learning solutions for traffic
-    monitoring, including crosswalk violation detection, vehicle classification
+  - Developed *computer-vision and deep-learning solutions* for traffic
+    monitoring, including *crosswalk violation detection*, vehicle classification
     and tracking, and license-plate recognition (OCR).
-  - Owned the end-to-end development and deployment of C++ computer-vision
-    libraries, from implementation to Linux-to-Windows cross-compilation and
-    Python/Java wrappers, abstracting complex vision functionality behind
+  - Owned the end-to-end development and deployment of *C++ computer-vision
+    libraries*, from implementation to *Linux-to-Windows cross-compilation* and
+    *Python/Java wrappers*, abstracting complex vision functionality behind
     high-level APIs for consumption by other teams.
 ]
 
@@ -305,6 +292,20 @@
   // Level 3 -- private school
 ]
 
+#let skills = [
+  == Skills
+
+  #strong[Programming Languages]: C, C++, Rust, Zig, Python, JavaScript, TypeScript, Lua, Haskell, OCaml, Bash, VHDL \
+  #strong[Frontend Development]: React, React Native, Tailwind CSS, Astro, HTML5, CSS3 \
+  #strong[Backend Development & Distributed Systems]: Node.js, Express, Flask, Axum, REST APIs, HTTP, WebSockets, gRPC, Protobuf \
+  #strong[Databases]: SQL, PostgreSQL, SQLite, DuckDB, Redis \
+  #strong[Data Science & Machine Learning]: NumPy, Pandas, OpenCV, PyTorch, large language models (LLMs), AI agents \
+  #strong[Systems Programming & Embedded Systems]: Linux, Yocto, CMake, GDB, Valgrind, sanitizers, Tokio, concurrency, multithreading \
+  #strong[Cloud Computing & DevOps]: AWS, Docker, Podman, Kubernetes, CI/CD, GitHub Actions \
+  #strong[Development Tools & Methodologies]: Git, Shell, Neovim, test-driven development (TDD), Agile, Scrum, Kanban, Jira, Confluence \
+  #strong[Spoken Languages]: Portuguese (native), English (fluent), German (intermediate), French (beginner)
+]
+
 // #grid(
 //   columns: (1fr, auto),
 //   gutter: spacing,
@@ -315,7 +316,7 @@
 //   picture,
 // )
 
-#skills
 #experience
 #education
 #awards
+#skills
