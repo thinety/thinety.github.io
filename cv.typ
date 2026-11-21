@@ -303,7 +303,7 @@
   #strong[Systems Programming & Embedded Systems]: Linux, Yocto, CMake, GDB, Valgrind, sanitizers, Tokio, concurrency, multithreading \
   #strong[Cloud Computing & DevOps]: AWS, Docker, Podman, Kubernetes, CI/CD, GitHub Actions \
   #strong[Development Tools & Methodologies]: Git, Shell, Neovim, test-driven development (TDD), Agile, Scrum, Kanban, Jira, Confluence \
-  #strong[Spoken Languages]: Portuguese (native), English (fluent), German (intermediate), French (beginner)
+  #strong[Spoken Languages]: Portuguese (native), English (fluent), German (intermediate), French (beginner), Spanish (beginner)
 ]
 
 // #grid(
